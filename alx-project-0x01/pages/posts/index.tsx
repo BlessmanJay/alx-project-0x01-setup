@@ -1,8 +1,9 @@
-import React from "react";
+import Header from "@/components/layout/Header";
 
 const PostsPage: React.FC = () => {
   return (
     <div className="p-8">
+      <Header />
       <h1 className="text-3xl mb-4">Posts Page</h1>
     </div>
   );
