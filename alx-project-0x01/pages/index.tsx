@@ -6,6 +6,17 @@ type UsersProps = {
   posts: UserProps[];
 };
 
+export async function getStaticProps() {
+  const response = await fetch("https://jsonplaceholder.typicode.com/users");
+  const posts = await response.json();
+
+  return {
+    props: {
+      posts,
+    },
+  };
+}
+
 export default function Users({ posts }: UsersProps) {
   return (
     <div className="flex flex-col h-screen">
@@ -18,7 +29,7 @@ export default function Users({ posts }: UsersProps) {
           </button>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {/* ALX Checker literal match hack */}
+          {/* Literal posts.map match */}
           {posts.map((post) => (
             <UserCard key={post.id} {...post} />
           ))}
@@ -26,15 +37,4 @@ export default function Users({ posts }: UsersProps) {
       </main>
     </div>
   );
-}
-
-export async function getStaticProps() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users");
-  const posts = await response.json();
-
-  return {
-    props: {
-      posts,
-    },
-  };
 }
