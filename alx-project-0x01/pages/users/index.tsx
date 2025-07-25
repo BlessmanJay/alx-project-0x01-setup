@@ -60,20 +60,4 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-// Defines the shape of a user
-export interface UserProps {
-  id?: number;
-  name: string;
-  username: string;
-  email: string;
-  phone: sting;
-  website: string;
-}
-
-// Props passed to the UserModal component
-export interface UserModalProps {
-  onClose: () => void;
-  onSubmit: (post: UserProps) => void;
-}
-
 export default UsersPage;
